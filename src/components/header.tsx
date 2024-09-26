@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 
 interface HeaderProps {
-    cartItemNumber: number
+    cartItemNumber: number,
+    onSearchClick:() => void
 }
 
-function Header({ cartItemNumber }: HeaderProps) {
+function Header({ cartItemNumber, onSearchClick }: HeaderProps) {
     const [isSearchVisible, setSearchVisible] = useState(false);
     const cartClassList = (cartItemNumber <= 0) ? "invisible absolute" : "flex text-center justify-center items-center bg-primarycolor rounded-full w-4 h-4 text-[0.65rem] absolute right-0 bottom-0"
 
@@ -22,13 +23,10 @@ function Header({ cartItemNumber }: HeaderProps) {
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
     }, []);
 
     return (
-        <div className="flex justify-center w-full p-3 pl-5 pr-5">
+        <div className="flex justify-center w-full p-3 pl-5 pr-5 sticky">
 
             {isSearchVisible && (
                 <div ref={searchRef} className="flex justify-center items-center absolute z-10 gap-1
@@ -40,7 +38,8 @@ function Header({ cartItemNumber }: HeaderProps) {
                             className="border p-2 rounded w-80 text-sm border-gray-500 pr-8"
                         />
                         <div className='flex gap-2'></div>
-                        <svg className='absolute right-0 m-[0.4rem] p-1 rounded-full cursor-pointer transition-all hover:bg-slate-600 hover:bg-opacity-35'
+                        <svg onClick={onSearchClick}
+                            className='absolute right-0 m-[0.4rem] p-1 rounded-full cursor-pointer transition-all hover:bg-slate-600 hover:bg-opacity-35'
                             xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
                             <path fill="currentColor" d="m19.485 20.154l-6.262-6.262q-.75.639-1.725.989t-1.96.35q-2.402 
                                                 0-4.066-1.663T3.808 9.503T5.47 5.436t4.064-1.667t4.068 1.664T15.268 
