@@ -5,5 +5,6 @@ export interface ProductModel{
     properties:string[],
     title:string[],
     regularPrice:string,
-    isSoldOut:string
+    isSoldOut:string,
+    id:string
 }
