@@ -15,7 +15,7 @@ function Home() {
         setError(null); // Réinitialiser l'erreur
 
         try {
-            const response = await axios.get('http://localhost:3000/products');
+            const response = await axios.get(import.meta.env.VITE_API_URL+'products');
             setData(response.data); // Mettre à jour les données
         } catch (err) {
             setError('Erreur lors de la récupération des données'); // Gérer l'erreur

@@ -6,12 +6,9 @@ import Cart from './pages/cart';
 import Checkout from './pages/checkout';
 import PageNotFound from './pages/pageNotFound';
 import Layout from "./components/layout";
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 function App() {
-
+  
   return (
     <Layout>
       <BrowserRouter>
