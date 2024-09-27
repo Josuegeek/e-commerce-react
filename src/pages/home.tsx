@@ -30,6 +30,7 @@ function Home() {
     }, []);
 
     return (
+        
         <div className="grid grid-cols-4 w-full max-w-[1024px]">
             {loading && <p>Chargement...</p>}
             {error && <p className="text-red-500">{error}</p>}
