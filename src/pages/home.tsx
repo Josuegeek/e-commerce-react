@@ -15,7 +15,7 @@ function Home() {
         setError(null); // Réinitialiser l'erreur
 
         try {
-            const response = await axios.get('http://localhost:3000/products');
+            const response = await axios.get('https://json-server-e-commerce-6y5k.onrender.com/products');
             setData(response.data); // Mettre à jour les données
         } catch (err) {
             setError('Erreur lors de la récupération des données'); // Gérer l'erreur
@@ -27,6 +27,7 @@ function Home() {
     // Utiliser useEffect pour appeler fetchData au chargement du composant
     useEffect(() => {
         fetchData();
+        console.log()
     }, []);
 
     return (
